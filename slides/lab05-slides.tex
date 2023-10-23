@@ -223,6 +223,8 @@
 	\frame{\titlepage}
 }
 
+\section*{Introduction}
+
 \begin{frame}{Lab for today}
   \vspace{1cm}
   \begin{itemize}
@@ -243,6 +245,7 @@
     \item Only supports two functions: \(\readf{}\), \(\writef{v}\)
     \item \writef{v} returns \(\ack\) upon termination
     \item \readf{} returns previously written value, or initial value \(v_0\)
+    \item Writes and reads can happen \emph{concurrently}
   \end{itemize}
 \end{frame}
  
@@ -330,7 +333,7 @@
  
 \begin{frame}{ABD Read algorithm}
   \vspace{1cm}
-  \textbf{Solution}: add a \writebackf phase\bigskip
+  \textbf{Solution}: add a \hlcyan{\writebackf{}} phase\bigskip
   \begin{enumerate}
     \narrowitems
     \item \textbf{Phase 1}: Proceed as in naïve case
