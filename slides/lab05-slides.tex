@@ -1,0 +1,368 @@
+\let\zendcenter\endcenter\RequirePackage[l2tabu,orthodox]{nag}\let\endcenter\zendcenter
+\documentclass[xcolor=dvipsnames,compress]{beamer}
+\addtobeamertemplate{footnote}{\hskip -2em}{}
+
+% Filter out annoying warnings
+\usepackage{silence}
+\WarningFilter{nag}{table with no}
+\WarningFilter{nag}{figure with no}
+
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{shapes,shadings,arrows,positioning,automata,matrix,calc,decorations.pathreplacing,decorations.pathmorphing,spy,fit,tikzmark,plotmarks,backgrounds,shadows}
+\tikzset{% 
+    client/.style={minimum width=1cm,minimum height=1cm,scale=0.07},
+    server/.style={minimum width=1cm,minimum height=1cm,scale=0.07},
+    arrow/.style={->,=stealth,draw=black,very thick,shorten >=2mm,shorten <=2mm},
+    outline/.style={very thick,draw=black,minimum width=3cm,minimum height=1.5cm},
+    ellipse/.style={scale=3},
+    hidden/.style={text=white,draw=white},
+    above arrow/.style={yshift=0.6cm},
+    text steps/.style={text width=3cm,yshift=0.8cm},
+    token/.style={circle,inner sep=0pt,minimum width=0.84cm,minimum height=0.79cm,draw=black,very thick},
+		square/.style={regular polygon,regular polygon sides=4,minimum width=1cm},
+		% add table style: https://tex.stackexchange.com/questions/28087/example-of-fancy-table-using-tikz-package
+    table/.style={
+        matrix of nodes,
+        row sep=-\pgflinewidth,
+        column sep=-\pgflinewidth,
+        nodes={
+            rectangle,
+            draw=black,
+            align=center
+        },
+        minimum height=1.5em,
+        text depth=0.5ex,
+        text height=2ex,
+        nodes in empty cells,
+    }
+}
+\renewcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\pgfplotsset{compat=1.16}
+\usetheme{bjeldbak}
+\usepackage{nimbusmononarrow}
+\newcommand{\hiddentext}[1]{\textcolor{white}{#1}\xspace}
+
+\usepackage{fontspec}
+\setmainfont[Mapping=tex-text]{Roboto Mono}
+\let\sfdefault\rmdefault
+
+% figure captions
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\setbeamerfont{caption}{size=\footnotesize}
+
+\usepackage{textgreek}
+\usepackage{newunicodechar}
+\newunicodechar{π}{\ifmmode\ensuremath{\pi}\xspace\else\textpi\fi}
+\usepackage{textcomp}
+\usepackage{scalerel}
+\def\🔒{\scalerel*{\includegraphics[scale=0.15]{images/lock.eps}}{\textrm{\textbigcircle}}}
+
+\usepackage[l2tabu,orthodox]{nag}
+\usepackage{ifthen}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage[lambda,landau,operators,probability,sets,logic,advantage,complexity,asymptotics,notions,mm,primitives,ff,adversary,events,oracles]{cryptocode}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{wasysym}
+\usepackage{csquotes}
+\usepackage{bm}
+
+% for ticks and crosses
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{multirow}
+\usepackage{booktabs}  %% tables
+
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{colortbl}
+\usepackage{tcolorbox}
+
+\usepackage{hyperref}
+
+%% bib
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{local.bib}
+\newcommand\bibfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% custom legend text
+\pgfplotsset{
+	legend image with text/.style={
+		legend image code/.code={%
+			\node[anchor=center] at (0.3cm,0cm) {#1};
+		}
+	},
+}
+
+% colours
+\definecolor{DarkRoyalBlue}{HTML}{332288}
+\definecolor{DarkBlue}{HTML}{6699CC}
+\definecolor{LightBlue}{HTML}{88CCEE}
+\definecolor{DarkGreen}{HTML}{117733}
+\definecolor{DarkRed}{HTML}{661100}
+\definecolor{LightRed}{HTML}{CC6677}
+\definecolor{LightPink}{HTML}{AA4466}
+\definecolor{DarkPink}{HTML}{882255}
+\definecolor{LightRoyalBlue}{HTML}{AA4499}
+
+\definecolor{DarkBrown}{HTML}{604c38}
+\definecolor{DarkTeal}{HTML}{23373b}
+\definecolor{LightBrown}{HTML}{EB811B}
+\definecolor{LightGreen}{HTML}{14B03D}
+\definecolor{metropoli}{HTML}{004d4d}
+\definecolor{orangeu}{HTML}{ff5c33}
+
+\definecolor{VapourCyan}{HTML}{27B3B6}
+\definecolor{VapourMagenta}{HTML}{FF00FF}
+\definecolor{PineGreen}{HTML}{058C73}
+\definecolor{SafeBlue}{HTML}{1a75ff}
+\definecolor{SafeYellow}{HTML}{ffd633}
+\definecolor{SafeRed}{HTML}{ff3333}
+
+\usepackage{soul}
+\newcommand*{\cbox}[2]{%
+    \fboxsep=1pt%
+    \fcolorbox{#2}{#2}{#1}%
+}
+\newcommand{\hlwhite}[1]{{\cbox{#1}{white}}}
+\newcommand{\hlcyan}[1]{{\cbox{#1}{VapourCyan!30}}}
+\newcommand{\hlorangeu}[1]{{\cbox{#1}{orangeu!30}}}
+\newcommand{\hlmagenta}[1]{{\cbox{#1}{VapourMagenta!20}}}
+\newcommand{\hlblue}[1]{{\cbox{#1}{LightBlue!60}}}
+\newcommand{\hlgreen}[1]{{\cbox{#1}{PineGreen!30}}}
+\newcommand{\hlleaf}[1]{{\cbox{#1}{green!30}}}
+\newcommand{\hlmetropoli}[1]{{\cbox{#1}{metropoli!20}}}
+\newcommand{\hlred}[1]{{\cbox{#1}{red!25}}}
+\newcommand{\hlviolet}[1]{{\cbox{#1}{violet!40}}}
+\newcommand{\hlyellow}[1]{{\cbox{#1}{SafeYellow}}}
+\newcommand{\hldarkblue}[1]{{\cbox{#1}{SafeBlue!65}}}
+\newcommand{\hlpinegreen}[1]{{\cbox{#1}{PineGreen}}}
+
+% itemize bullet styling
+\newcommand*{\upbullet}{$\textcolor{orangeu}{\bm{\diamond}}$}
+\newcommand*{\triright}{$\textcolor{orangeu}{\bm{\triangleright}}$}
+\setbeamertemplate{itemize item}{\upbullet}
+\setbeamertemplate{itemize subitem}{\triright}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\newcommand{\wideitems}{\setlength\itemsep{2em}}
+\newcommand{\narrowitems}{\setlength\itemsep{1em}}
+
+% Set title to the center
+% \setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{frametitle}{\vspace*{-1cm}}
+\newcolumntype{o}{>{\columncolor{orangeu!30}}c}
+\newcolumntype{v}{>{\columncolor{VapourMagenta!20}}c}
+\newcolumntype{x}{>{\columncolor{VapourCyan!30}}c}
+\newcolumntype{y}{>{\columncolor{LightBlue!60}}c}
+\newcolumntype{z}{>{\columncolor{white}}c}
+
+% macros
+\input{macros}
+\hypersetup{colorlinks,linkcolor=,urlcolor=SafeBlue}
+\newcommand{\qlink}[1]{\textcolor{SafeBlue}{\textbf{\underline{\url{https://aulas.alxdavids.xyz/pergunta/#1}}}}}
+
+% long vs short
+\def\islong{1}
+\newcommand{\longonly}[1]{%
+\ifthenelse{\equal{\islong}{1}}
+{{#1}}%
+{{}}%
+}%
+
+% titling
+\newcommand{\intertitle}[1]{\vspace{0.1cm}\textbf{:: \textsc{#1} ::}\vspace{0.1cm}\\}
+\newcommand{\centertitle}[1]{\begin{center}\intertitle{#1}\end{center}}
+
+% which practical
+\def\ispractical{1}
+\newcommand{\pone}[1]{%
+\ifthenelse{\equal{\ispractical}{1}}
+{{#1}}%
+{{}}%
+}%
+\newcommand{\ptwo}[1]{%
+\ifthenelse{\equal{\ispractical}{2}}
+{{#1}}%
+{{}}%
+}%
+\newcommand{\pthree}[1]{%
+\ifthenelse{\equal{\ispractical}{3}}
+{{#1}}%
+{{}}%
+}%
+
+\newcommand{\readf}{\ensuremath{\mathsf{read}()}\xspace}
+\newcommand{\readtagf}{\ensuremath{\mathsf{read}\text{-}\mathsf{tag}()}\xspace}
+\newcommand{\writef}[1]{\ensuremath{\mathsf{write}(#1)}\xspace}
+\newcommand{\writebackf}[1]{\ensuremath{\mathsf{write}\text{-}\mathsf{back}(#1)}\xspace}
+\newcommand{\ack}{\ensuremath{\mathsf{ACK}}\xspace}
+\newcommand{\sn}{\ensuremath{\mathsf{sn}}\xspace}
+\newcommand{\id}{\ensuremath{\mathsf{id}}\xspace}
+
+\title{\textsc{\textbf{Lab 05: ABD Quorums}}}
+\subtitle{\textsc{\textbf{Algoritmos e Sistemas Distribuídos (ASD)}}}
+
+\author{
+	\footnotesize
+	\textbf{Alex Davidson}
+}
+
+\date{\scriptsize October 2023 \\\bigskip \href{mailto:a.davidson@fct.unl.pt}{a.davidson@fct.unl.pt}}
+\begin{document}
+\noindent
+	
+{
+	\setbeamertemplate{headline}{}
+	\frame{\titlepage}
+}
+
+\begin{frame}{Assignment Link}
+  \vspace{1cm}
+  \centering
+  {\Large \url{https://classroom.github.com/a/JSdMJ6iF}}
+\end{frame}
+
+\begin{frame}{Read/Write Variable Replication}
+  \vspace{1cm}
+  \begin{itemize}
+    \wideitems
+    \item Particular case of state-machine replication
+    \item Only supports two functions: \(\readf{}\), \(\writef{v}\)
+    \item \writef{v} returns \(\ack\) upon termination
+    \item \readf{} returns previously written value, or initial value \(v_0\)
+  \end{itemize}
+\end{frame}
+ 
+\begin{frame}{ABD (Attiya, Bar-Noy, Dolev) algorithm}
+  \vspace{1cm}
+  \begin{itemize}
+    \wideitems
+    \item Quorum-based system 
+    \item \textbf{Assumption (Liveness)}: \hlgreen{\(2f+1\)} correct processes, for \hlred{\(f\)} possible failures
+    \item \textbf{Assumption}: Asynchronous
+    \item \textbf{Assumption}: Reliable (pp2p) links
+    \item Generalises to \tikzmark{mults}multiple values\tikzmark{multe}
+  \end{itemize}
+  \begin{tikzpicture}[overlay,remember picture]
+    \draw[->,very thick,draw=orangeu] (mults.south) -- (multe.south) to[out=0,in=180] ++ (0.35,-0.5) node[right,draw=orangeu,text=orangeu,very thick,scale=0.85,text width=4cm] {Identifiers for values, and parallel executions};
+  \end{tikzpicture}
+\end{frame}
+ 
+\begin{frame}{State}
+  \vspace{1cm}
+  State for process \(i\) (\(\state_i\)):\smallskip
+  \begin{itemize}
+    \narrowitems
+    \item \(v_i\): value, initially \(v_0\)
+    \item \(t_i\): pair \((\sn_i,\id_i)\), initially \((0,0)\)
+    \item \(t_i > t_j\) iff \((\sn_i > \sn_j)\,\vee\,((\sn_1 = \sn_2)\,\wedge\,(\id_1 > \id_2))\)
+  \end{itemize}
+\end{frame}
+ 
+\begin{frame}{\writef{v} issued by process \(j\)}
+  \vspace{1cm}
+  \textbf{Phase 1}:
+  \begin{enumerate}
+    \narrowitems
+    \item Send message \readtagf{} to all replicas
+    \item Wait for a quorum \(Q\) (\(|Q| > 2f+1\)) of replies
+    \item Let \(\sn_{max} = \max(\{\sn_i\}_{t_i \in Q})\)
+  \end{enumerate}\bigskip
+  \textbf{Phase 2}:
+  \begin{enumerate}
+    \narrowitems
+    \item Send message \writef{t_{v} = (\sn_{max}+1,\id_j),v} to all
+    \item Wait for a quorum \(Q\) (\(|Q| > 2f+1\)) of \ack
+    \item Return \ack (write considered \hlgreen{terminated})
+  \end{enumerate}
+\end{frame}
+ 
+\begin{frame}{Replica process \(i\)}
+  \vspace{1cm}
+  \begin{itemize}
+    \wideitems
+    \item Upon reception of \hlblue{\readtagf{}}: return \(t_i\)
+    \item Upon reception of \hlyellow{\writef{t_{v},v}}:\smallskip
+    \begin{itemize}
+      \narrowitems
+      \item if \(t_{v} > t_i\): \(t_i = t_v\); \(v_i = v\)
+      \item Return \ack
+    \end{itemize}
+    \item Upon reception of \hlmagenta{\readf{}}: Return \(t_i,v_i\)
+  \end{itemize}
+\end{frame}
+ 
+\begin{frame}{Read algorithm: naïve attempt}
+  \vspace{1cm}
+  \begin{enumerate}
+    \wideitems
+    \item Send \readf{} to all replicas
+    \item Wait for a quorum \(Q\) of replies \(\{(t_i,v_i)\}_{i \in Q}\)
+    \item Let \((t_{max},v_{max}) = \max(\{t_i,v_i\}_{i \in Q})\)
+    \item Return \(v_{max}\)
+  \end{enumerate}\bigskip
+
+  Question: Does this ensure \hlred{\textbf{atomicity}}?
+\end{frame}
+ 
+\begin{frame}{Read algorithm: naïve attempt}
+  \vspace{1cm}
+  \hlred{\textbf{Nope}}
+  \begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{figures/non-atomic.png}
+  \end{figure}\bigskip
+  This execution can occur because \(t_{max}\) may be derived from a non-completed write.
+\end{frame}
+ 
+\begin{frame}{ABD Read algorithm}
+  \vspace{1cm}
+  \textbf{Solution}: add a \writebackf phase\bigskip
+  \begin{enumerate}
+    \narrowitems
+    \item \textbf{Phase 1}: Proceed as in naïve case
+    \item \textbf{Phase 2}: Send \(\writef{t_{max},v_{max}}\) to all replicas
+    \item Wait for a majority quorum of \ack
+    \item Return \(v_{max}\)
+  \end{enumerate}
+\end{frame}
+ 
+\begin{frame}{ABD Read: Termination}
+  \vspace{1cm}
+  \textbf{Termination} (\(\leq f\) faults):\bigskip
+  \begin{itemize}
+    \wideitems
+    \item Assuming well-formed messages
+    \item Follows from properties of underlying links
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{ABD Read: Atomicity proof sketch}
+  \vspace{1cm}
+  \begin{itemize}
+    \narrowitems
+    \item Serialisation points exist in \textbf{Phase 2} of \readf{} and \writef{}
+    \item Writes necessarily happen \textbf{before} reads
+    \item Reads return most recent value by a completed \writef{}, otherwise \readf{} \hlyellow{forces} \writef{} completion.
+    \item Subsequent \writef{} ops will not be impacted by forced previous writes
+    \item Serialisation points for \writef{} are defined between start and end of operation
+  \end{itemize}
+\end{frame}
+ 
+\begin{frame}{More details}
+  \vspace{1cm}
+  \begin{itemize}
+    \wideitems
+    \item ``Sharing Memory Robustly in Message-Passing System'' (JACM 1995)
+    \item Edsger W. Dijkstra Prize in Distributed Computing: 2011
+    \item Available \href{http://www.cse.huji.ac.il/course/2004/dist/p124-attiya.pdf}{here}
+  \end{itemize}
+\end{frame}
+\end{document}

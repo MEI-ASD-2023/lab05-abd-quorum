@@ -1,0 +1,204 @@
+\newcommand{\A}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\B}{\ensuremath{\mathcal{B}}\xspace}
+\newcommand{\D}{\ensuremath{\mathcal{D}}\xspace}
+\newcommand{\E}{\ensuremath{\mathcal{E}}\xspace}
+\newcommand{\F}{\ensuremath{\mathcal{F}}\xspace}
+\newcommand{\gdv}{\ensuremath{\mathcal{G}}\xspace}
+\renewcommand{\H}{\ensuremath{\mathcal{H}}\xspace}
+\newcommand{\I}{\ensuremath{\mathcal{I}}\xspace}
+\newcommand{\J}{\ensuremath{\mathcal{J}}\xspace}
+\newcommand{\K}{\ensuremath{\mathcal{K}}\xspace}
+\newcommand{\M}{\ensuremath{\mathcal{M}}\xspace}
+\newcommand{\N}{\ensuremath{\mathcal{N}}\xspace}
+\renewcommand{\P}{\ensuremath{\mathcal{P}}\xspace}
+\newcommand{\Q}{\ensuremath{\mathcal{Q}}\xspace}
+\newcommand{\R}{\ensuremath{\mathcal{R}}\xspace}
+\newcommand{\T}{\ensuremath{\mathcal{T}}\xspace}
+\newcommand{\udv}{\ensuremath{\mathcal{U}}\xspace}
+\newcommand{\V}{\ensuremath{\mathcal{V}}\xspace}
+\newcommand{\W}{\ensuremath{\mathcal{W}}\xspace}
+\newcommand{\X}{\ensuremath{\mathcal{X}}\xspace}
+\newcommand{\Y}{\ensuremath{\mathcal{Y}}\xspace}
+\newcommand{\Z}{\ensuremath{\mathcal{Z}}\xspace}
+\newcommand{\odv}{\ensuremath{\mathcal{O}}\xspace}
+\newcommand{\OO}{\ensuremath{\mathds{O}}\xspace}
+% \renewcommand{\SS}{\ensuremath{\mathds{S}}\xspace}
+\newcommand{\threshold}{\textbf{k}\xspace}
+\newcommand{\total}{\ensuremath{\eta}\xspace}
+\newcommand{\RO}{\ensuremath{\mathsf{RO}}\xspace}
+\newcommand{\DB}{\ensuremath{DB}}
+
+% misc
+\newcommand{\push}[1]{\ensuremath{\mathsf{push}(#1)}\xspace}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+% \newcommand{\goodcell}[1]{\cellcolor{green!25}{#1}}
+% \newcommand{\avgcell}[1]{\cellcolor{yellow!25}{#1}}
+% \newcommand{\badcell}[1]{\cellcolor{red!25}{#1}}
+\newcommand{\goodcell}[1]{\cellcolor{white}{#1}}
+\newcommand{\avgcell}[1]{\cellcolor{white}{#1}}
+\newcommand{\badcell}[1]{\cellcolor{white}{#1}}
+
+% problems and definitions
+\newcommand{\ndhe}{\ensuremath{\mathsf{nDHE}}\xspace}
+\newcommand{\omgapsdhi}[2]{\ensuremath{(#1,#2)\textsf{-OM-Gap-SDHI}}\xspace}
+
+% encryption
+\newcommand{\skescheme}{\ensuremath{\mathsf{ske}}\xspace}
+\newcommand{\skeschemeshort}{\ensuremath{\Sigma}\xspace}
+\newcommand{\aux}{\ensuremath{\mathsf{aux}}\xspace}
+
+% secret sharing
+\newcommand{\adss}[2]{\ensuremath{(#1,#2)\text{-secret-sharing}}\xspace}
+\newcommand{\adssscheme}[2]{\ensuremath{\mathsf{ss}(#1,#2)}\xspace}
+\newcommand{\adssschemeshort}[2]{\ensuremath{\Pi}_{#1,#2}\xspace}
+\newcommand{\share}[1]{\ensuremath{\mathsf{share}(#1)}\xspace}
+\newcommand{\reveal}[1]{\ensuremath{\mathsf{recover}(#1)}\xspace}
+\newcommand{\sharenoinput}{\ensuremath{\mathsf{share}}\xspace}
+\newcommand{\revealnoinput}{\ensuremath{\mathsf{recover}}\xspace}
+
+% fspoprf
+\newcommand{\mtag}{\ensuremath{\tau}\xspace}
+\newcommand{\mtagset}{\ensuremath{\T}\xspace}
+\newcommand{\sel}{\ensuremath{\mathsf{sel}}\xspace}
+\newcommand{\adap}{\ensuremath{\mathsf{adp}}\xspace}
+\newcommand{\fspoprf}{PPOPRF\xspace}
+\newcommand{\fspoprfscheme}{\ensuremath{\mathsf{ppoprf}}\xspace}
+\newcommand{\fspoprfschemeshort}{\ensuremath{\Gamma}\xspace}
+\newcommand{\voprf}{VOPRF\xspace}
+\newcommand{\voprfscheme}{\ensuremath{\mathsf{voprf}}\xspace}
+\newcommand{\voprfschemeshort}{\ensuremath{\Gamma}\xspace}
+\newcommand{\fspseudorandom}{\textsf{Punc-Pseudorandom}\xspace}
+\newcommand{\fspseudorandomshort}{\ensuremath{\mathsf{PPR}}\xspace}
+\newcommand{\fspseudorandomparam}[1]{\ensuremath{\fspseudorandomshort^{{#1}}_{\secpar,n}}\xspace}
+
+% crypto
+\newcommand{\PRG}[1]{\ensuremath{\mathsf{PRG}(#1)}\xspace}
+\newcommand{\mpk}{\ensuremath{\mathsf{mpk}}\xspace}
+\newcommand{\msk}{\ensuremath{\mathsf{msk}}\xspace}
+\newcommand{\pparams}{\ensuremath{\mathsf{pp}}\xspace}
+\renewcommand{\rq}{\ensuremath{\mathsf{rq}}\xspace}
+\newcommand{\state}{\ensuremath{\mathsf{st}}\xspace}
+\newcommand{\rp}{\ensuremath{\mathsf{rp}}\xspace}
+\newcommand{\poprfscheme}{\ensuremath{\mathsf{poprf}}\xspace}
+\newcommand{\pprfscheme}{\ensuremath{\mathsf{pprf}}\xspace}
+\newcommand{\derive}[1]{\ensuremath{\mathsf{derive}(#1)}\xspace}
+\newcommand{\poprfsetup}[1]{\ensuremath{\mathsf{setup}(#1)}\xspace}
+\newcommand{\mskgen}[1]{\ensuremath{\mathsf{keygen}(#1)}\xspace}
+\newcommand{\req}[1]{\ensuremath{\mathsf{req}(#1)}\xspace}
+\renewcommand{\eval}[1]{\ensuremath{\mathsf{eval}(#1)}\xspace}
+\newcommand{\blindeval}[1]{\ensuremath{\mathsf{blindeval}(#1)}\xspace}
+\newcommand{\unblind}[1]{\ensuremath{\mathsf{unblind}(#1)}\xspace}
+\newcommand{\finalize}[1]{\ensuremath{\mathsf{finalize}(#1)}\xspace}
+\renewcommand{\puncture}[1]{\ensuremath{\mathsf{puncture}(#1)}\xspace}
+\newcommand{\poprfsetupbm}[1]{\ensuremath{\text{\textbf{\textsf{setup}}}(#1)}\xspace}
+\newcommand{\mskgenbm}[1]{\ensuremath{\text{\textbf{\textsf{keygen}}}(#1)}\xspace}
+\newcommand{\reqbm}[1]{\ensuremath{\text{\textbf{\textsf{req}}}(#1)}\xspace}
+\newcommand{\evalbm}[1]{\ensuremath{\text{\textbf{\textsf{eval}}}(#1)}\xspace}
+\newcommand{\blindevalbm}[1]{\ensuremath{\text{\textbf{\textsf{blindeval}}}(#1)}\xspace}
+\newcommand{\unblindbm}[1]{\ensuremath{\text{\textbf{\textsf{unblind}}}(#1)}\xspace}
+\newcommand{\finalizebm}[1]{\ensuremath{\text{\textbf{\textsf{finalize}}}(#1)}\xspace}
+\newcommand{\puncturebm}[1]{\ensuremath{\text{\textbf{\textsf{puncture}}}(#1)}\xspace}
+\newcommand{\pkverify}[1]{\ensuremath{\mathsf{pkverify}(#1)}\xspace}
+\newcommand{\corrupt}{\ensuremath{\mathsf{corrupt}}\xspace}
+\newcommand{\mskgennoinput}{\ensuremath{\mathsf{keygen}}\xspace}
+\newcommand{\derivenoinput}{\ensuremath{\mathsf{derive}}\xspace}
+\newcommand{\puncturenoinput}{\ensuremath{\mathsf{puncture}}\xspace}
+\newcommand{\evalnoinput}{\ensuremath{\mathsf{eval}}\xspace}
+\newcommand{\reqnoinput}{\ensuremath{\mathsf{req}}\xspace}
+\newcommand{\blindevalnoinput}{\ensuremath{\mathsf{blindeval}}\xspace}
+\newcommand{\unblindnoinput}{\ensuremath{\mathsf{unblind}}\xspace}
+\newcommand{\pkverifynoinput}{\ensuremath{\mathsf{pkverify}}\xspace}
+\newcommand{\finalizenoinput}{\ensuremath{\mathsf{finalize}}\xspace}
+
+% mpc
+
+\newcommand{\ideal}[1]{\ensuremath{\mathsf{Ideal}(#1)}\xspace}
+\newcommand{\real}[1]{\ensuremath{\mathsf{Real}(#1)}\xspace}
+\newcommand{\protocol}{\ensuremath{\P}\xspace}
+\newcommand{\inputs}{\ensuremath{\mathsf{inputs}}\xspace}
+\newcommand{\stat}{\ensuremath{\stackrel{\text{\tiny s}}{\simeq}}\xspace}
+\newcommand{\comp}{\ensuremath{\stackrel{\text{\tiny c}}{\simeq}}\xspace}
+\newcommand{\chkequal}{\ensuremath{\stackrel{\text{\tiny ?}}{=}}\xspace}
+\newcommand{\leakage}[1]{\ensuremath{\mathsf{L}(#1)}\xspace}
+\newcommand{\leakagenoinput}{\ensuremath{\mathsf{L}}\xspace}
+\newcommand{\wedgespace}{\ensuremath{\,\wedge\,}\xspace}
+\newcommand{\veespace}{\ensuremath{\,\vee\,}\xspace}
+\newcommand{\game}[1]{\ensuremath{\gdv_{#1}}\xspace}
+\renewcommand{\oracle}[1]{\ensuremath{\odv_{#1}}\xspace}
+
+% layout
+
+\newcommand{\point}[1]{\par\smallskip{\noindent\textbf{#1.}~}}
+
+\newcommand{\sfone}{\textsf{1}}
+\newcommand{\sftwo}{\textsf{2}}
+\newcommand{\tool}[1][]{\textsf{STAR}{#1}\xspace}
+\newcommand{\toolfull}{\tool{}\xspace}
+\newcommand{\toollite}{\tool{}\textsf{Lite}\xspace}
+\newcommand{\titletext}{\texorpdfstring{\tool}{STAR}: \underline{S}ecret Sharing for Private \underline{T}hreshold \underline{A}ggregation \underline{R}eporting}
+\newcommand{\repourl}{\footnote{\anonymous{\url{https://bitbucket.org/star-protocol/sta-rs/}}{\url{https://github.com/brave-experiments/sta-rs}}}\xspace}
+
+% lwe
+
+\newcommand{\sqmatrixdomain}[2]{\ensuremath{{#1}^{#2 \times #2}}\xspace}
+\newcommand{\lwe}[1]{\ensuremath{\mathsf{LWE}_{#1}}\xspace}
+\newcommand{\matlwe}[1]{\ensuremath{\mathsf{MatLWE}_{#1}}\xspace}
+\newcommand{\lhe}{\ensuremath{\mathsf{LHE}}\xspace}
+\newcommand{\vvec}[1]{\ensuremath{\bm{#1}}\xspace}
+\newcommand{\idxsuper}[1]{\ensuremath{\bm{#1}}\xspace}
+\newcommand{\mata}{\ensuremath{\vvec{A}}\xspace}
+\newcommand{\matb}{\ensuremath{\vvec{B}}\xspace}
+\newcommand{\matdb}{\ensuremath{\vvec{D}}\xspace}
+\newcommand{\mate}{\ensuremath{\vvec{E}}\xspace}
+\newcommand{\matf}{\ensuremath{\vvec{F}}\xspace}
+\newcommand{\matm}{\ensuremath{\vvec{M}}\xspace}
+\newcommand{\mats}{\ensuremath{\vvec{S}}\xspace}
+\newcommand{\matu}{\ensuremath{\vvec{U}}\xspace}
+\newcommand{\maty}{\ensuremath{\vvec{Y}}\xspace}
+% \newcommand{\norm}[1]{\ensuremath{\| #1 \|}\xspace}
+\newcommand{\inftynorm}[1]{\norm{#1}_\infty\xspace}
+\newcommand{\twonorm}[1]{\norm{#1}_2\xspace}
+\newcommand{\round}[1]{\ensuremath{\lfloor #1 \rceil}\xspace}
+\newcommand{\roundp}[2]{\ensuremath{\round{#1}_{#2}}\xspace}
+\newcommand{\roundup}[1]{\ensuremath{\lceil #1 \rceil}\xspace}
+\newcommand{\rounddown}[1]{\ensuremath{\lfloor #1 \rfloor}\xspace}
+\newcommand{\seed}{\ensuremath{\mu}\xspace}
+\newcommand{\vecb}{\ensuremath{\vvec{b}}\xspace}
+\newcommand{\vecc}{\ensuremath{\vvec{c}}\xspace}
+\newcommand{\vecs}{\ensuremath{\vvec{s}}\xspace}
+\newcommand{\vece}{\ensuremath{\vvec{e}}\xspace}
+\newcommand{\vecf}{\ensuremath{\vvec{f}}\xspace}
+\newcommand{\vecu}{\ensuremath{\vvec{u}}\xspace}
+\newcommand{\vecv}{\ensuremath{\vvec{v}}\xspace}
+\newcommand{\vecw}{\ensuremath{\vvec{w}}\xspace}
+\newcommand{\vecx}{\ensuremath{\vvec{x}}\xspace}
+\newcommand{\vecy}{\ensuremath{\vvec{y}}\xspace}
+\newcommand{\vecz}{\ensuremath{\vvec{z}}\xspace}
+\newcommand{\transpose}[1]{\ensuremath{{#1}^T}\xspace}
+
+% maths
+
+\newcommand{\ith}[1]{\ensuremath{{#1}^{\text{th}}}\xspace}
+\newcommand{\powtwo}[1]{\ensuremath{2^{#1}}\xspace}
+
+% pir
+
+\newcommand{\pirscheme}{\ensuremath{\mathsf{FPIR}}\xspace}
+\newcommand{\setup}[1]{\ensuremath{\mathsf{ssetup}(#1)}\xspace}
+\newcommand{\chello}[1]{\ensuremath{\mathsf{cinit}(#1)}\xspace}
+\newcommand{\sinit}[1]{\ensuremath{\mathsf{spreproc}(#1)}\xspace}
+\newcommand{\cinit}[1]{\ensuremath{\mathsf{cpreproc}(#1)}\xspace}
+\newcommand{\query}[1]{\ensuremath{\mathsf{query}(#1)}\xspace}
+\newcommand{\respond}[1]{\ensuremath{\mathsf{respond}(#1)}\xspace}
+\newcommand{\process}[1]{\ensuremath{\mathsf{process}(#1)}\xspace}
+\newcommand{\setupnoinput}{\ensuremath{\mathsf{ssetup}}\xspace}
+\newcommand{\chellonoinput}{\ensuremath{\mathsf{cinit}}\xspace}
+\newcommand{\sinitnoinput}{\ensuremath{\mathsf{spreproc}}\xspace}
+\newcommand{\cinitnoinput}{\ensuremath{\mathsf{cpreproc}}\xspace}
+\newcommand{\querynoinput}{\ensuremath{\mathsf{query}}\xspace}
+\newcommand{\respondnoinput}{\ensuremath{\mathsf{respond}}\xspace}
+\newcommand{\processnoinput}{\ensuremath{\mathsf{process}}\xspace}
+
+\newcommand{\frodopir}[1][]{\textsf{FrodoPIR}\xspace}
+\newcommand{\frodopirtitle}{\texorpdfstring{\frodopir}{FrodoPIR}: Simple, Scalable, Single-Server Private Information Retrieval}
+\newcommand{\opensource}{\url{https://github.com/brave-experiments/frodo-pir}}
